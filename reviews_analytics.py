@@ -1,3 +1,4 @@
+import time
 data = []
 less = []
 good = []
@@ -5,6 +6,7 @@ bad = []
 wc = {}
 def word_count(filename):
 	with open(filename, 'r') as f:
+		start_time = time.time()
 		a = 0
 		for message in f:
 			words = message.split(' ')
@@ -17,7 +19,8 @@ def word_count(filename):
 		for word in wc:
 			if wc[word] > 1000000:
 				print(word, '出現了', wc[word], '次')
-
+		end_time = time.time()
+		print('計數總共花了',end_time - start_time, '秒')
 		while True:
 			key = input('請輸入想查找的字（退出請輸入q)：')
 			if key == 'q':
